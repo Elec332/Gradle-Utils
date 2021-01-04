@@ -3,8 +3,6 @@ package nl.elec332.gradle.util
 import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.artifacts.maven.MavenDeployer
-import org.gradle.api.component.SoftwareComponent
-import org.gradle.language.BinaryCollection
 import org.gradle.nativeplatform.toolchain.NativeToolChainRegistry
 
 import java.util.function.Consumer
