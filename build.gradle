@@ -1,0 +1,9 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'groovy'
+}
+
+group 'nl.elec332.gradle'
+version '1.0.0-Alpha'
+
+sourceCompatibility = targetCompatibility = 1.8
