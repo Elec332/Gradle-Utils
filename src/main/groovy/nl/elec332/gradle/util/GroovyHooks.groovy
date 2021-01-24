@@ -34,7 +34,7 @@ class GroovyHooks {
         }
     }
 
-    static void configureToolchains(Project project, Consumer<NativeToolChainRegistry> consumer) {
+    static void configureToolChains(Project project, Consumer<NativeToolChainRegistry> consumer) {
         project.model {
             toolChains {
                 consumer.accept(it)
