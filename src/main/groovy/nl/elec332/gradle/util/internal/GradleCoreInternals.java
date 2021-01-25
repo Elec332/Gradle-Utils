@@ -2,8 +2,9 @@ package nl.elec332.gradle.util.internal;
 
 import org.gradle.api.Project;
 import org.gradle.api.internal.file.*;
-import org.gradle.api.internal.project.DefaultProject;
 import org.gradle.api.internal.project.ProjectInternal;
+import org.gradle.api.internal.tasks.DefaultTaskDependency;
+import org.gradle.api.internal.tasks.TaskContainerInternal;
 import org.gradle.internal.jvm.Jvm;
 import org.gradle.internal.os.OperatingSystem;
 import org.gradle.internal.service.ServiceRegistry;
@@ -45,6 +46,11 @@ public class GradleCoreInternals {
         FileResolver resolver = fileLookup.getFileResolver(source);
         FileCollectionFactory fileCollectionFactoryWithBase = fileCollectionFactory.withResolver(resolver);
         return DefaultFileOperations.createSimple(resolver, fileCollectionFactoryWithBase, services);
+    }
+
+    public static DefaultTaskDependency newTaskDependency(Project project) {
+        TaskContainerInternal tasks = (TaskContainerInternal) project.getTasks();
+        return new DefaultTaskDependency(tasks);
     }
 
 }
