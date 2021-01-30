@@ -21,16 +21,16 @@ import java.util.Set;
 @SuppressWarnings("UnstableApiUsage")
 public class Utils {
 
+    public static boolean isNullOrEmpty(String s) {
+        return s == null || s.equals("");
+    }
+
     public static boolean isUnix() {
         return GradleCoreInternals.getCurrentOs().isUnix();
     }
 
     public static boolean isWindows() {
         return GradleCoreInternals.getCurrentOs().isWindows();
-    }
-
-    public static boolean isNullOrEmpty(String s) {
-        return s == null || s.equals("");
     }
 
     public static void addFileDependency(Configuration cfg, DependencyHandler dependencyHandler, FileCollection file) {

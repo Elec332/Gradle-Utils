@@ -3,6 +3,7 @@ package nl.elec332.gradle.util;
 import org.gradle.api.Project;
 import org.gradle.api.Task;
 import org.gradle.api.artifacts.Configuration;
+import org.gradle.api.plugins.BasePluginConvention;
 import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.tasks.SourceSetContainer;
 
@@ -44,12 +45,12 @@ public class ProjectHelper {
 
     @Nonnull
     public static String getDefaultMainSourceFolderPath(Task task) {
-        return Objects.requireNonNull(getDefaultMainSourceFolderPath(task.getProject()));
+        return getDefaultMainSourceFolderPath(task.getProject());
     }
 
     @Nonnull
     public static String getDefaultSourceFolderPath(Task task) {
-        return Objects.requireNonNull(getDefaultSourceFolderPath(task.getProject()));
+        return getDefaultSourceFolderPath(task.getProject());
     }
 
     @Nonnull
@@ -64,7 +65,12 @@ public class ProjectHelper {
 
     @Nonnull
     public static File getBuildFolder(Task task) {
-        return Objects.requireNonNull(getBuildFolder(task.getProject()));
+        return getBuildFolder(task.getProject());
+    }
+
+    @Nonnull
+    public static BasePluginConvention getBaseConvention(Task task) {
+        return getBaseConvention(task.getProject());
     }
 
     /////////////////////////
@@ -119,6 +125,13 @@ public class ProjectHelper {
         return Objects.requireNonNull(project.getBuildDir());
     }
 
+    @Nonnull
+    public static BasePluginConvention getBaseConvention(Project project) {
+        return Objects.requireNonNull(((BasePluginConvention) project.getProject().getConvention().getPlugins().get("base")));
+    }
+
+    /////////////////////////
+
     public static Task getBuildTask(Project project) {
         return getTaskByName(project, "build");
     }
@@ -139,6 +152,10 @@ public class ProjectHelper {
                 runnable.run();
             }
         });
+    }
+
+    public static String getVersion(Project project) {
+        return GroovyHooks.getVersion(project);
     }
 
 }

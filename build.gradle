@@ -1,23 +1,29 @@
 plugins {
-    id "nl.elec332.gradle.ossrhplugin" version "1.0.1-Alpha"
-    id 'java-gradle-plugin'
+    id "nl.elec332.gradle.ossrhplugin" version "1.1.0"
     id 'groovy'
 }
 
-group 'nl.elec332.gradle'
-version '1.0.0-Alpha'
+group 'nl.elec332.lib'
+version '1.0.0-Beta'
 
 sourceCompatibility = targetCompatibility = 1.8
 
+dependencies {
+    implementation gradleApi()
+}
+
 ossrh {
-    description = 'Utility library for making Gradleplugins'
+
+    description = 'Utility library for making Gradle plugins'
     githubUrl = 'https://github.com/Elec332/Gradle-Utils'
 
     license {
-        name 'GNU Lesser General Public License, version 2.1'
-        url 'https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt'
+        name = 'GNU Lesser General Public License, version 2.1'
+        url = 'https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt'
     }
+
     developer {
-        name 'Elec332'
+        name = 'Elec332'
     }
+
 }

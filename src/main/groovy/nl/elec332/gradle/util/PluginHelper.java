@@ -9,9 +9,13 @@ import org.gradle.util.GradleVersion;
 public class PluginHelper {
 
     public static void checkMinimumGradleVersion(String version) {
-        if (GradleVersion.current().compareTo(GradleVersion.version(version)) < 0) {
+        if (!isAtLeastVersion(version)) {
             throw new UnsupportedVersionException("This plugin requires at least Gradle version " + version);
         }
+    }
+
+    public static boolean isAtLeastVersion(String version) {
+        return GradleVersion.current().compareTo(GradleVersion.version(version)) >= 0;
     }
 
 }
