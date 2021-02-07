@@ -1,7 +1,9 @@
 package nl.elec332.gradle.util;
 
+import nl.elec332.gradle.util.abstraction.IProjectObjects;
 import nl.elec332.gradle.util.abstraction.ITaskDependency;
 import nl.elec332.gradle.util.internal.GradleCoreInternals;
+import nl.elec332.gradle.util.internal.ProjectObjects;
 import org.gradle.api.Project;
 import org.gradle.api.Task;
 import org.gradle.api.artifacts.Configuration;
@@ -13,7 +15,9 @@ import org.gradle.nativeplatform.toolchain.internal.NativeToolChainRegistryInter
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Map;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 /**
  * Created by Elec332 on 18-4-2020
@@ -69,5 +73,16 @@ public class Utils {
 
         };
     }
+
+    public static IProjectObjects getProjectObjects(Project project) {
+        if (helpers.containsKey(project)) {
+            return helpers.get(project);
+        }
+        ProjectObjects ret = project.getObjects().newInstance(ProjectObjects.class, project);
+        helpers.put(project, ret);
+        return ret;
+    }
+
+    private static final Map<Project, ProjectObjects> helpers = new WeakHashMap<>();
 
 }
