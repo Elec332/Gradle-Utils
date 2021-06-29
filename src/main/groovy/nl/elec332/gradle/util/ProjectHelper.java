@@ -87,7 +87,7 @@ public class ProjectHelper {
 
     @Nonnull
     public static Configuration getCompileConfiguration(Project project) {
-        return Objects.requireNonNull(project.getConfigurations().getByName("compile"));
+        return Objects.requireNonNull(project.getConfigurations().getByName("implementation"));
     }
 
     @Nonnull

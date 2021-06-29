@@ -17,9 +17,7 @@ public class FileHelper {
             } else {
                 for (File file : folder.listFiles()) {
                     if (file.isDirectory()) {
-                        for (File file2 : file.listFiles()) {
-                            file2.delete();
-                        }
+                        cleanFolder(file);
                     }
                     file.delete();
                 }

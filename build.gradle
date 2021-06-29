@@ -4,12 +4,12 @@ plugins {
 }
 
 group 'nl.elec332.lib'
-version '1.0.2-Beta'
+version '1.0.3-Beta'
 
 sourceCompatibility = targetCompatibility = 1.8
 
 dependencies {
-    implementation gradleApi()
+    compileOnly gradleApi()
 }
 
 ossrh {
