@@ -115,7 +115,8 @@ public class JavaPluginHelper {
         extendConfigurations(project, ret.getRuntimeOnlyConfigurationName(), parent.getRuntimeOnlyConfigurationName());
 
         project.getTasks().getByName(ret.getCompileJavaTaskName()).dependsOn(parent.getClassesTaskName());
-        project.getDependencies().add(ret.getCompileClasspathConfigurationName(), project.files(parent.getJava().getOutputDir()));
+//        project.getDependencies().add(ret.getCompileClasspathConfigurationName(), project.files(parent.getJava().getOutputDir())); See below after update to gradle 8.1
+        project.getDependencies().add(ret.getCompileClasspathConfigurationName(), project.files(parent.getJava().getDestinationDirectory()));
 
         return ret;
     }

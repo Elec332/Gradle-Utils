@@ -57,6 +57,11 @@ public class ProjectObjects implements IProjectObjects {
         }
     }
 
+    @Override
+    public ImmutableAttributesFactory getAttributesFactory() {
+        return this.attributesFactory;
+    }
+
     private static final MethodHandle attributeSetterC;
 
     static {

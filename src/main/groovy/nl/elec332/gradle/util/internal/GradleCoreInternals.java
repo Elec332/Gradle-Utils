@@ -47,7 +47,7 @@ public class GradleCoreInternals {
 
     public static DefaultTaskDependency newTaskDependency(Project project) {
         TaskContainerInternal tasks = (TaskContainerInternal) project.getTasks();
-        return new DefaultTaskDependency(tasks);
+        return new DefaultTaskDependency(tasks, null);
     }
 
 }
