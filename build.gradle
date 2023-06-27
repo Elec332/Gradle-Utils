@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'nl.elec332.lib'
-version '1.0.3-Beta'
+version '1.0.4-Beta'
 
 sourceCompatibility = targetCompatibility = 1.8
 
